@@ -1,40 +1,41 @@
 // Team.js
 
-import React, { useState } from 'react';
+import React from 'react';
+import Civilization from './Civilization';
+import { useDrop } from 'react-dnd';
 
-const Team = ({ team, onDraftUpdate, availableCivilizations }) => {
-  const [selectedCiv, setSelectedCiv] = useState(null);
-
-  const handleBan = () => {
-    onDraftUpdate(team.id, 'ban', selectedCiv);
-    setSelectedCiv(null);
-  };
-
-  const handlePick = () => {
-    onDraftUpdate(team.id, 'pick', selectedCiv);
-    setSelectedCiv(null);
-  };
+const Team = ({ team, onPick, onBan }) => {
+  const [{ isOver, canDrop }, drop] = useDrop({
+    accept: 'CIVILIZATION',
+    drop: (item) => {
+      if (team.id === item.teamId) {
+        if (item.action === 'pick') {
+          onPick(item.civilization);
+        } else if (item.action === 'ban') {
+          onBan(item.civilization);
+        }
+      }
+    },
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver(),
+      canDrop: !!monitor.canDrop(),
+    }),
+  });
 
   return (
-    <div className="team">
+    <div className={`team ${isOver && canDrop ? 'hovered' : ''}`}>
       <h3>{team.name}</h3>
-      <div className="draft-actions">
-        <div>
-          <label>Select Civilization:</label>
-          <select
-            value={selectedCiv || ''}
-            onChange={(e) => setSelectedCiv(e.target.value)}
-          >
-            <option value="">Choose Civilization</option>
-            {availableCivilizations.map((civ) => (
-              <option key={civ.id} value={civ.id}>
-                {civ.name}
-              </option>
-            ))}
-          </select>
-        </div>
-        <button onClick={handleBan}>Ban</button>
-        <button onClick={handlePick}>Pick</button>
+      <div className="picks-column" ref={drop}>
+        <h4>Picks</h4>
+        {team.picks.map((pickedCivilization) => (
+          <Civilization key={pickedCivilization.id} civilization={pickedCivilization} action="pick" />
+        ))}
+      </div>
+      <div className="bans-column" ref={drop}>
+        <h4>Bans</h4>
+        {team.bans.map((bannedCivilization) => (
+          <Civilization key={bannedCivilization.id} civilization={bannedCivilization} action="ban" />
+        ))}
       </div>
     </div>
   );

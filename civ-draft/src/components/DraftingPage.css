@@ -1,60 +1,56 @@
-/* DraftingPage.css */
+/* DraftingPage.css (or your preferred CSS file) */
 
-.drafting-page {
-    background-color: #f4f4f4;
-    padding: 20px;
-    text-align: center;
-  }
-
-  h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-
-  .team-list {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+/* Dark mode background */
+body {
+    background-color: #121212; /* Dark background color for the entire page */
+    color: #fff; /* Text color for dark mode */
   }
 
   .team {
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    border: 1px solid #333;
+    background-color: #1e1e1e; /* Dark background color for teams */
     padding: 20px;
-    margin: 10px;
     width: 300px;
-    text-align: center;
-  }
-
-  .draft-actions {
-    margin-top: 20px;
-  }
-
-  label {
-    display: block;
-    font-weight: bold;
-  }
-
-  select {
-    width: 100%;
-    padding: 5px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
-
-  button {
-    margin: 5px;
-    padding: 10px 20px;
-    background-color: #0077B6; /* Customize the button color */
-    color: #FFFFFF; /* Customize the text color */
-    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    margin: 10px;
   }
 
-  button:hover {
-    background-color: #005E9A; /* Change button color on hover */
+  .hovered {
+    background-color: #333; /* Dark background when a civilization is being dragged over the team */
+    transition: background-color 0.3s;
   }
+
+  .picks-column, .bans-column, .civilization-list {
+    padding: 10px;
+    margin: 10px;
+  }
+
+  .picks-column, .bans-column {
+    border: 1px solid #555;
+    background-color: #2a2a2a; /* Dark background for pick and ban columns */
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  .civilization {
+    background-color: #009688; /* Teal color for civilizations */
+    color: #fff;
+    border: 1px solid #333;
+    padding: 10px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+
+  .civilization.dragging {
+    opacity: 0.7;
+  }
+
+  h3, h4 {
+    margin: 0;
+    color: #009688;
+  }
+
+  /* Additional styling can be added as per your dark mode design requirements */

@@ -2,6 +2,10 @@
 
 import React, { useState } from 'react';
 import Team from './Team';
+import Civilization from './Civilization';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import './DraftingPage.css';
 
 const DraftingPage = () => {
   const availableCivilizations = [
@@ -24,63 +28,37 @@ const DraftingPage = () => {
     picks: [],
   });
 
-  const handleDraftUpdate = (teamId, action, civilization) => {
-    if (teamId === 1) {
-      if (action === 'ban') {
-        setTeam1({ ...team1, bans: [...team1.bans, civilization] });
-      } else if (action === 'pick') {
-        setTeam1({ ...team1, picks: [...team1.picks, civilization] });
-      }
-    } else if (teamId === 2) {
-      if (action === 'ban') {
-        setTeam2({ ...team2, bans: [...team2.bans, civilization] });
-      } else if (action === 'pick') {
-        setTeam2({ ...team2, picks: [...team2.picks, civilization] });
-      }
-    }
+  const handlePick = (civilization) => {
+    // Implement your logic to add picked civilizations to teams
+    // For example, check which team is picking and add the civilization to their picks.
+    setTeam1((prevTeam) => ({
+      ...prevTeam,
+      picks: [...prevTeam.picks, civilization],
+    }));
+  };
+
+  const handleBan = (civilization) => {
+    // Implement your logic to add banned civilizations to teams
+    // For example, check which team is banning and add the civilization to their bans.
+    setTeam1((prevTeam) => ({
+      ...prevTeam,
+      bans: [...prevTeam.bans, civilization],
+    }));
   };
 
   return (
-    <div className="drafting-page">
-      <h2>Team Drafting Page</h2>
-      <Team team={team1} onDraftUpdate={handleDraftUpdate} availableCivilizations={availableCivilizations} />
-      <Team team={team2} onDraftUpdate={handleDraftUpdate} availableCivilizations={availableCivilizations} />
-
-      <div className="picked-bans">
-        <div className="team-picks">
-          <h3>{team1.name}'s Picks</h3>
-          <ul>
-            {team1.picks.map((civilization) => (
-              <li key={civilization.id}>{civilization.name}</li>
-            ))}
-          </ul>
-        </div>
-        <div className="team-bans">
-          <h3>{team1.name}'s Bans</h3>
-          <ul>
-            {team1.bans.map((civilization) => (
-              <li key={civilization.id}>{civilization.name}</li>
-            ))}
-          </ul>
-        </div>
-        <div className="team-picks">
-          <h3>{team2.name}'s Picks</h3>
-          <ul>
-            {team2.picks.map((civilization) => (
-              <li key={civilization.id}>{civilization.name}</li>
-            ))}
-          </ul>
-        </div>
-        <div className="team-bans">
-          <h3>{team2.name}'s Bans</h3>
-          <ul>
-            {team2.bans.map((civilization) => (
-              <li key={civilization.id}>{civilization.name}</li>
-            ))}
-          </ul>
+    <DndProvider backend={HTML5Backend}>
+      <div className="drafting-page">
+        <h2>Team Drafting Page</h2>
+        <Team team={team1} onPick={handlePick} onBan={handleBan} />
+        <Team team={team2} onPick={handlePick} onBan={handleBan} />
+        <div className="civilization-list">
+          {availableCivilizations.map((civilization) => (
+            <Civilization key={civilization.id} civilization={civilization} />
+          ))}
         </div>
       </div>
-    </div>
+    </DndProvider>
   );
 };
 
