@@ -1,0 +1,40 @@
+/* Team.css */
+
+.team {
+    background-color: #333; /* Dark background color */
+    color: #fff; /* Light text color on dark background */
+    border: 1px solid #555; /* Dark border color */
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+  }
+
+  .team-name {
+    font-size: 1.2rem;
+    margin: 10px 0;
+  }
+
+  .column {
+    border: 2px solid #111; /* Darker border for columns */
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+  }
+
+  /* Adjusted color to match the Windows Metro style */
+  .picks-column {
+    background-color: #0078d4; /* Metro-style blue for picks in dark mode */
+    color: #fff; /* Light text color on blue */
+  }
+
+  /* Adjusted color to match the Windows Metro style */
+  .bans-column {
+    background-color: #f17000; /* Metro-style orange for bans in dark mode */
+    color: #fff; /* Light text color on orange */
+  }
+
+  .hovered {
+    border: 2px solid #27ae60;
+    background-color: #27ae60 !important;
+  }

@@ -53,4 +53,13 @@ body {
     color: #009688;
   }
 
+  .drafting-page {
+    display: flex;
+    justify-content: center;
+  }
+
+  .teams-container {
+    display: flex;
+  }
+
   /* Additional styling can be added as per your dark mode design requirements */
