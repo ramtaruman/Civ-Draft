@@ -1,0 +1,60 @@
+/* DraftingPage.css */
+
+.drafting-page {
+    background-color: #f4f4f4;
+    padding: 20px;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  .team-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  .team {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+    width: 300px;
+    text-align: center;
+  }
+
+  .draft-actions {
+    margin-top: 20px;
+  }
+
+  label {
+    display: block;
+    font-weight: bold;
+  }
+
+  select {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+
+  button {
+    margin: 5px;
+    padding: 10px 20px;
+    background-color: #0077B6; /* Customize the button color */
+    color: #FFFFFF; /* Customize the text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #005E9A; /* Change button color on hover */
+  }

@@ -1,0 +1,76 @@
+/* LandingPage.css */
+
+.landing-page {
+    background: url('https://images8.alphacoders.com/707/707947.jpg'); /* Add your background image URL */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    color: #ffffff; /* Text color for dark mode */
+  }
+
+
+.landing-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+}
+
+/* Apply a blur effect to the background image */
+.landing-page::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url('https://images8.alphacoders.com/707/707947.jpg'); /* Same background image */
+  background-size: cover;
+  background-position: center;
+  filter: blur(5px) brightness(0.3);
+  transition: filter 0.3s ease;
+   /* Apply a blur effect */
+}
+
+/* Style your text content and buttons */
+.landing-content {
+    position: relative;
+    z-index: 1; /* Bring the content to the foreground */
+    padding: 20px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.7); /* Background with opacity */
+  }
+
+h1 {
+  font-size: 2rem;
+  /* Add other styles as needed */
+}
+
+p {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  /* Add other styles as needed */
+}
+
+.start-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #0077B6; /* Customize the button color */
+  color: #FFFFFF; /* Customize the text color */
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.start-button:hover {
+  background-color: #0000f8; /* Change button color on hover */
+}
